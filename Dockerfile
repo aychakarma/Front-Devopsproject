@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN  ng build --configuration=production
 
 # Étape 2 : Utiliser une image NGINX pour servir l'application
 FROM nginx:alpine
