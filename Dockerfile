@@ -10,5 +10,5 @@ RUN ng build --configuration=production
 # Utiliser une image NGINX pour servir l'application
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 4200
 CMD ["nginx", "-g", "daemon off;"]
