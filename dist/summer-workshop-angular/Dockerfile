@@ -5,4 +5,5 @@ FROM nginx:latest
 COPY /dist/summer-workshop-angular /usr/share/nginx/html
 
 # Nginx est configuré pour écouter le port 80 par défaut
-EXPOSE 80
+EXPOSE 80 
+#tt
