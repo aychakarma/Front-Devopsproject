@@ -1,15 +1,14 @@
-# Étape 1 : Builder l'application
-FROM node:14 as build
+# Utiliser une image Node.js plus récente
+FROM node:16 as build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
-# Installer Angular CLI globalement
 RUN npm install -g @angular/cli
+RUN npm install
 COPY . .
 RUN ng build --configuration=production
 
-# Étape 2 : Utiliser une image NGINX pour servir l'application
+# Utiliser une image NGINX pour servir l'application
 FROM nginx:alpine
-COPY --from=build /app/dist/* /usr/share/nginx/html/
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
